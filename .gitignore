@@ -127,3 +127,15 @@ aizuhack-\347\231\272\350\241\250/
 
 # Ignore all .DS_Store files (for Mac users)
 .DS_Store
+
+# System directories
+'Application Data'/ 
+Cookies/
+'Local Settings'/
+'My Documents'/
+NetHood/
+PrintHood/
+Recent/
+SendTo/
+Templates/
+'スタート メニュー'/
