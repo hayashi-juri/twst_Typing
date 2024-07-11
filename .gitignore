@@ -1,0 +1,119 @@
+# Ignore the .vscode directory
+.vscode/
+
+# Ignore user-specific directories
+AppData/
+Apple/
+Contacts/
+Downloads/
+Favorites/
+Google/
+IntelGraphicsProfiles/
+Links/
+Music/
+OneDrive/
+Pictures/
+Saved Games/
+Searches/
+Videos/
+iCloudDrive/
+iCloudPhotos/
+
+# Ignore temporary files and build artifacts
+*.exe
+*.out
+*.zip
+*.log
+*.tmp
+
+# Ignore system files
+NTUSER.DAT
+ntuser.dat.LOG1
+ntuser.dat.LOG2
+ntuser.ini
+
+# Ignore specific files and directories from your list
+AtCoder-Beginners-Selection/
+Cadence6/
+Computer_architecture.zip
+Computer_architecture/
+DataManegement/
+Documents/
+Lecture - CDP.pdf
+NetworkPrograming/
+NetworkSecurity.zip
+NetworkSecurity/
+OS-Exe/
+OS.zip
+OverridingAndHidingMethods.txt
+OverridingAndHidingMethods.zip
+Prog1/
+SA/
+SPLS.zip
+SPLS/
+Software engineering/
+System_Ex/
+Systems/
+Tracing/
+VehicleTest.java
+"\345\212\233\345\255\246\346\274\224\347\277\222/"
+"\345\276\256\347\251\215\343\200\200\343\203\217\343\203\263\343\203\211\343\202\242\343\202\246\343\203\210/"
+"\346\203\205\345\240\261\343\202\273\343\202\255\343\203\245\343\203\252\343\203\206\343\202\243/"
+"\347\265\214\346\270\210\345\255\246/"
+"\351\201\216\345\216\273\345\225\217-1\345\271\264-1\345\255\246\346\234\237/"
+"\351\201\216\345\216\273\345\225\217-1\345\271\264-2\345\255\246\346\234\237/"
+"\351\233\273\347\243\201\346\260\227/"
+# Ignore directories
+Designer/
+EX3/
+Ex4/
+Ex5/
+Java2/
+META-INF/
+Obsidian/
+__MACOSX/
+aizuhack/
+hw/
+jgit-2018/
+jgit-2022/
+kadai/
+lecture_past/
+mogwai-erdesignerng-3.1.1/
+python/
+s1290101-e6/
+s1290101-e7/
+s1290101.RMI/
+se1ex12/
+senkei2-ex/
+sql-workbench-j-build-128/
+src/
+temp/
+tmp/
+
+# Ignore specific files
+NTUSER.DAT{a2332f18-cdbf-11ec-8680-002248483d79}.TM.blf
+NTUSER.DAT{a2332f18-cdbf-11ec-8680-002248483d79}.TMContainer00000000000000000001.regtrans-ms
+NTUSER.DAT{a2332f18-cdbf-11ec-8680-002248483d79}.TMContainer00000000000000000002.regtrans-ms
+Quiz-L11-SOL(1).docx
+Quiz-L11-SOL(2).docx
+academic-er(1).xml
+dm.sql
+dm_example.mv.db
+dm_example.trace.db
+ex02.drawio
+gpa.c
+line bike service.txt
+q4.ods
+q5.c
+result.txt
+se1ex12.jar
+voice_ex3.wav
+
+# Ignore specific folders with non-ASCII names
+"\345\212\233\345\255\246\346\274\224\347\277\222/"
+"\345\276\256\347\251\215\343\200\200\343\203\217\343\203\263\343\203\211\343\202\242\343\202\246\343\203\210/"
+"\346\203\205\345\240\261\343\202\273\343\202\255\343\203\245\343\203\252\343\203\206\343\202\243/"
+"\347\265\214\346\270\210\345\255\246/"
+"\351\201\216\345\216\273\345\225\217-1\345\271\264-1\345\255\246\346\234\237/"
+"\351\201\216\345\216\273\345\225\217-1\345\271\264-2\345\255\246\346\234\237/"
+"\351\233\273\347\243\201\346\260\227/"
