@@ -129,13 +129,16 @@ aizuhack-\347\231\272\350\241\250/
 .DS_Store
 
 # System directories
-'Application Data'/ 
+Application Data/ 
 Cookies/
-'Local Settings'/
-'My Documents'/
+Local Settings/
+My Documents/
 NetHood/
 PrintHood/
 Recent/
 SendTo/
 Templates/
-'スタート メニュー'/
+スタート メニュー/
+# Ignore SSH configuration files
+.ssh/
+.lesshst
