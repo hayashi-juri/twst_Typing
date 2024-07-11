@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Game</title>
+    <style>
+        #subject {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        #countdown {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .error {
+            color: red;
+        }
+        #results {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown"></div>
+    <div id="subject"></div>
+    <form name="typing" onsubmit="return false;">
+        <input type="text" name="input" autocomplete="off">
+        <button type="button" name="btn">Check</button>
+    </form>
+    <div id="results"></div>
+
+    <script>
+        const textList = [
+            'Hello World',
+            'Good',
+            'I love JavaScript',
+            'This is MyApp',
+            'Welcome'
+        ];
+
+        const subject = document.getElementById('subject');
+        const countdown = document.getElementById('countdown');
+        const form = document.forms.typing;
+        const results = document.getElementById('results');
+        let count = 0;
+        let totalAttempts = 0;
+        let correctAttempts = 0;
+        let startTime;
+        let totalTime = 0;
+        let currentWord;
+        let firstAttempt = true;
+
+        function startCountdown(seconds) {
+            countdown.textContent = `Time left: ${seconds} seconds`;
+            const timer = setInterval(function() {
+                seconds--;
+                countdown.textContent = `Time left: ${seconds} seconds`;
+                if (seconds <= 0) {
+                    clearInterval(timer);
+                    countdown.textContent = 'Time is up!';
+                    form.btn.disabled = true;
+                    displayResults();
+                }
+            }, 1000);
+        }
+
+        function highlightDifference(correctText, userText) {
+            let highlightedText = '';
+            for (let i = 0; i < correctText.length; i++) {
+                if (userText[i] !== correctText[i]) {
+                    highlightedText += `<span class="error">${correctText[i]}</span>`;
+                } else {
+                    highlightedText += correctText[i];
+                }
+            }
+            return highlightedText;
+        }
+
+        function displayResults() {
+            const accuracy = (correctAttempts / totalAttempts) * 100;
+            const averageSpeed = totalTime / totalAttempts;
+            results.innerHTML = `Accuracy: ${accuracy.toFixed(2)}%<br>Average Typing Speed: ${averageSpeed.toFixed(2)} seconds per word`;
+        }
+
+        function init() {
+            const rnd = Math.floor(Math.random() * textList.length);
+            currentWord = textList[rnd];
+            subject.innerHTML = currentWord;
+            form.input.value = '';
+            form.input.focus();
+            startTime = new Date().getTime();
+            firstAttempt = true;
+            form.btn.disabled = false;
+        }
+
+        function checkInput() {
+            const userInput = form.input.value;
+            if (firstAttempt) {
+                totalAttempts++;
+                if (userInput === currentWord) {
+                    correctAttempts++;
+                }
+                firstAttempt = false;
+            }
+
+            if (userInput === currentWord) {
+                const endTime = new Date().getTime();
+                const timeTaken = (endTime - startTime) / 1000;
+                totalTime += timeTaken;
+                count++;
+                if (count < 5) {
+                    init();
+                } else {
+                    form.btn.disabled = true;
+                    displayResults();
+                }
+            } else {
+                subject.innerHTML = highlightDifference(currentWord, userInput);
+            }
+        }
+
+        form.btn.addEventListener('click', function(e) {
+            checkInput();
+        });
+
+        form.input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                checkInput();
+            }
+        });
+
+        // Initialize the game
+        init();
+        startCountdown(60); // Start a 60-second countdown
+    </script>
+</body>
+</html>
+
