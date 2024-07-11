@@ -66,7 +66,25 @@ sql-workbench-j-build-128/
 src/
 temp/
 tmp/
-
+AtCoder-Beginners-Selection/
+Cadence6/
+Computer_architecture/
+DataManegement/
+Documents/
+NetworkPrograming/
+NetworkSecurity/
+OS-Exe/
+OverridingAndHidingMethods.txt
+Prog1/
+SA/
+SPLS/
+Software engineering/
+System_Ex/
+Systems/
+Tracing/
+VehicleTest.java
+arg/
+storage/
 # Specific files
 .gitconfig
 Quiz-L11-SOL*.docx
