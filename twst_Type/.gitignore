@@ -1,0 +1,11 @@
+# Ignore directories
+.mogwai/
+.sqlworkbench/
+UnityGame/
+
+# Ignore NTUSER.DAT files
+NTUSER.DAT{a2332f17-cdbf-11ec-8680-002248483d79}.TxR.*
+
+# Ignore specific files
+typing\ game/
+"\350\254\233\350\251\225.txt"

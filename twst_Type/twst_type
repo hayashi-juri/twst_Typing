@@ -1,0 +1,107 @@
+import pygame
+import time
+
+# Function to load sentences from a file
+def load_sentences(filename):
+    with open(filename, 'r') as file:
+        return [line.strip() for line in file.readlines()]
+
+# Initialize Pygame
+pygame.init()
+
+# Screen dimensions
+WIDTH, HEIGHT = 800, 600
+
+# Colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+PURPLE = (142, 131, 201)  # 変更: 次の文字の色を#8e83c9に
+
+# Load background image
+background_image = pygame.image.load('background.png')
+
+# Set up the screen
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Typing Game")
+
+# Set up font
+font = pygame.font.SysFont('timesnewroman', 36)  # 変更: フォントをTimes New Romanに
+
+# Load sentences from file
+sentences = load_sentences('sentences.txt')
+current_sentence = sentences[0]
+typed_sentence = ""
+current_index = 0
+
+# Timing
+start_time = None
+
+# Function to render text in multiple lines if necessary
+def render_text(text, font, color):
+    words = text.split()
+    lines = []
+    current_line = words[0]
+    for word in words[1:]:
+        test_line = current_line + " " + word
+        if font.size(test_line)[0] <= WIDTH - 100:  # 100はマージン
+            current_line = test_line
+        else:
+            lines.append(current_line)
+            current_line = word
+    lines.append(current_line)
+    surfaces = [font.render(line, True, color) for line in lines]
+    return surfaces
+
+# Game loop
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN:
+            if not start_time:
+                start_time = time.time()
+            if event.unicode == current_sentence[current_index]:
+                typed_sentence += event.unicode
+                current_index += 1
+                if current_index == len(current_sentence):
+                    current_index = 0
+                    typed_sentence = ""
+                    current_sentence = sentences[(sentences.index(current_sentence) + 1) % len(sentences)]
+                    start_time = None
+
+    # Clear the screen with white background
+    screen.fill(WHITE)  # 変更: 背景を白で塗りつぶす
+    screen.blit(background_image, (0, 0))  # 背景画像を重ねる
+
+    # Render the current sentence and typed text
+    sentence_surfaces = render_text(current_sentence, font, WHITE)
+    typed_surfaces = render_text(typed_sentence, font, WHITE)  # 変更: 通常の文字色を白に
+
+    # Display the text
+    y_offset = 150
+    for surface in sentence_surfaces:
+        screen.blit(surface, (50, y_offset))
+        y_offset += surface.get_height()
+
+    y_offset = 250
+    for surface in typed_surfaces:
+        screen.blit(surface, (50, y_offset))
+        y_offset += surface.get_height()
+
+    # Highlight the next letter
+    if current_index < len(current_sentence):
+        next_letter_surface = font.render(current_sentence[current_index], True, PURPLE)  # 変更: 次の文字の色をPURPLEに
+        screen.blit(next_letter_surface, (50 + font.size(typed_sentence)[0], 150))
+
+    # Display the time taken
+    if start_time:
+        elapsed_time = time.time() - start_time
+        time_surface = font.render(f"Time: {elapsed_time:.2f} seconds", True, WHITE)
+        screen.blit(time_surface, (50, 350))
+
+    # Update the display
+    pygame.display.flip()
+
+# Quit Pygame
+pygame.quit()
